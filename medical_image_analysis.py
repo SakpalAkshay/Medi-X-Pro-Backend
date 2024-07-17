@@ -42,7 +42,8 @@ model = genai.GenerativeModel(model_name="gemini-1.5-pro-latest",
                               safety_settings=safety_settings)
 
 system_prompts = [
-  "Your Prompt here"]
+   "Your 1st Prompt" , " Your second Prompt" 
+]
 
 st.title('Medical Image Analysis')
 
@@ -69,10 +70,11 @@ if submit:
 #     making our prompt ready
      prompt_parts = [
         image_parts[0],
-        system_prompts[0],
+        system_prompts[1],
     ]
      
      response = model.generate_content(prompt_parts)
      if response:
         st.title('Detailed analysis based on the uploaded image')
         st.write(response.text)
+        print(response.text.split("##"))
